@@ -1,0 +1,63 @@
+@import 'rupture'
+@import 'axis'
+@import 'grid'
+@import 'lib/reset'
+
+font-stack = georgia
+header-font-stack = helvetica
+body-font-size = 1.1rem
+body-line-height = 1.6
+desktop-ratio = 1.07
+
+gutter = g = 3%
+mobile = 28rem
+tablet = 40rem
+desktop = 50rem
+site = 50rem + (2 * gutter)
+rupture.scale = 0 (mobile) (mobile + ((tablet - mobile) / 2)) (tablet) (desktop) (site)
+mobile-cutoff = rupture.mobile-cutoff = mobile
+tablet = tablet-cutoff = rupture.tablet-cutoff = tablet
+desktop-cutoff = rupture.desktop-cutoff = desktop
+edges = site-max-width = max-site-width = max-width = rupture.hd-cutoff = site
+
+@import 'vertical-rhythm'
+@import 'typography'
+
+.page
+  center site gutter
+  padding-rhythm 1
+
+@keyframes fade-in-up
+  0%
+    opacity 0
+    transform translateY(2rem)
+  100%
+    opacity 1
+    transform translateY(0)
+
+h1
+  text-align center
+  rhythm 1
+
+.posts
+  center tablet
+
+.post
+  rhythm .25
+  padding-rhythm .5
+  padding-sides gutter
+  background tint(blue, 85%)
+  opacity 0
+  animation fade-in-up 150ms ease-in
+  animation-fill-mode both
+
+  &:last-child
+    margin-bottom 0
+
+  h2
+    @extends h4
+    margin-bottom 0
+
+  time
+    font-variant-numeric oldstyle-nums
+    font-feature-settings "onum"
